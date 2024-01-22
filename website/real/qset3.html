@@ -6,9 +6,10 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet'>
-        <script src="myscripts.js"></script>
+        <script src="scripts.js"></script>
 
-    
+        <style>
+        </style>
     </head>
 <body>
     <div class="sidenav">    
@@ -54,7 +55,7 @@
     </div>
 
     <div style="display: block; text-align: left; padding: 10px 10px; margin-left: 20%;">
-        <form>
+        <form id="formSet3">
             <p>Is the dataset still being maintained?</p>
             <div>  
             <input type="radio" id="yes" name="maintained" value="yes">
@@ -105,16 +106,15 @@
             <br>
             This is the last section in the data card creation guide. From here you may mark the card as completed using the button at the bottom of the page or save and exit to continue or complete at a later date.
         </maintext>
-        <form action="intro.html">
-            <button style="margin-top: 50px;" class="saveandexit">Save and Exit</button>
+        <form action="complete.html">
+        <button onclick="saveText(complete.html)" type="button"  style="margin-top: 50px;"  class="saveandexit">Save and Exit</button>
         </form>
     </div>
 
     <div class="lastpage" style="bottom: -265px;">
         <form action="qset2.html">
-        <button style="cursor: pointer; padding: 10px;"> &lt Last Page</button>
+        <button onclick="saveText(qset2.hmtl)" type="button"  style="cursor: pointer; padding: 10px;"> &lt Last Page</button>
         </form>
     </div>
-
 
 </body>

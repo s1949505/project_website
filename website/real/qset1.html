@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet'>
-        <script src="myscripts.js"></script>
+        <script src="script.js"></script>
 
         <style>
         </style>
@@ -55,7 +55,7 @@
     </div>
 
     <div style="display: block; text-align: left; padding: 10px 10px; margin-left: 20%;">
-        <form>
+        <form id="formSet1">
             <label for="DatasetName">Name of Dataset</label>
             <br>
             <textarea type="text" id="DatasetName" name="DatasetName" placeholder="&lt dataset name &gt"></textarea>
@@ -101,10 +101,9 @@
             <br>
             <textarea rows="1" type="text" id="date" name="date" placeholder="&lt dd/mm/yyyy &gt"></textarea>
             <br>
-            <label for="combination">Dataset version number</label>
+            <label for="version">Dataset version number</label>
             <br>
-            <textarea rows="1" type="text" id="combination" name="combination" placeholder="&lt eg. 1.0.1 &gt"></textarea>
-
+            <textarea rows="1" type="text" id="version" name="version" placeholder="&lt eg. 1.0.1 &gt"></textarea>
         </form>
     </div>
 
@@ -118,19 +117,18 @@
             <br>
             If you are unsure of any questions, you can save progress and continue at a later date.
         </maintext>
-        <button class="saveandexit">Save and Exit</button>
+        <button onclick="saveText(qset2.html)" type="button" class="saveandexit">Save and Exit</button>
     </div>
 
     <div class="nextpage">
         <form action="qset2.html">
-        <button style="cursor: pointer; padding: 10px;">Next Page ></button>
+            <button onclick="saveText(qset2)" type="button" style="cursor: pointer; padding: 10px;">Next Page ></button>
         </form>
     </div>
 
     <div class="lastpage">
         <form action="intro.html">
-        <button style="cursor: pointer; padding: 10px 30px;"> Exit </button>
+            <button onclick="saveText(intro.html)" style="cursor: pointer; padding: 10px 30px;"> Exit </button>
         </form>
     </div>
-
 </body>

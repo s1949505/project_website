@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet'>
-        <script src="myscripts.js"></script>
+        <script src="script.js"></script>
 
         <style>
         </style>
@@ -55,7 +55,7 @@
     </div>
 
     <div style="display: block; text-align: left; padding: 10px 10px 10px 10px; margin-left: 20%;">
-        <form>
+        <form id="formSet2">
             <label for="applications">Main Applications:</label>
             <br>
             <textarea rows="8" type="text" id="applications" name="applications" placeholder="&lt Include the intended or prefomed applications of the dataset. &#10Answers may include things like: &#10 - Speedch recognition &#10 - Object classification &#10 - So forth ... &gt"></textarea>
@@ -141,20 +141,19 @@
             <br>
             Remember, if you are unsure of any questions, you can save progress and continue at a later date or move on to the next section and return to anything left blank.
         </maintext>
-        <button style=" margin-top: 150px;" class="saveandexit">Save and Exit</button>
+        <button onclick="saveText(qset3.html)" type="button" style=" margin-top: 150px;" class="saveandexit">Save and Exit</button>
     </div>
 
     <div class="nextpage" style="bottom: -700px;">
         <form action="qset3.html">
-        <button style="cursor: pointer; padding: 10px;">Next Page ></button>
+            <button onclick="saveText(qset3.html)" type="button" style="cursor: pointer; padding: 10px;">Next Page ></button>
         </form>
     </div>
 
     <div class="lastpage" style="bottom: -700px;">
         <form action="qset1.html">
-        <button style="cursor: pointer; padding: 10px;"> &lt Last Page</button>
+            <button onclick="saveText(qset1.html)" type="button" style="cursor: pointer; padding: 10px;"> &lt Last Page</button>
         </form>
     </div>
-
 
 </body>
