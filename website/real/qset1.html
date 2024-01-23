@@ -68,6 +68,16 @@
             <br>
             <textarea rows="6" type="text" id="motivation" name="motivation" placeholder="&lt Provide a summary of the purpose of building this dataset and other reasons for motivation to do so. &#10Example points may include: &#10   Why the dataset been created. &#10   Justification for choosing such data &gt"></textarea>
             <br>
+            <p>Dataset Accessibility</p>
+            <div>
+                <input style="cursor: pointer;" type="radio" id="publicly" name="accessibility" value="Publicly available">
+                <label for="internal">Internally funded</label><br>
+                <input style="cursor: pointer;" type="radio" id="on_demand" name="accessibility" value="Available on demand">
+                <label for="external">Externally funded</label><br>
+                <input style="cursor: pointer;" type="radio" id="Private" name="accessibility" value="Private dataset">
+                <label for="combination">Combination</label><br>
+            </div>
+            <br>
             <label for="research">Motivation for Research</label>
             <br>
             <textarea rows="4" type="text" id="research" name="research" placeholder="&lt What was the question you were attempting to answer? Why is this important? &gt"></textarea>
@@ -117,18 +127,14 @@
             <br>
             If you are unsure of any questions, you can save progress and continue at a later date.
         </maintext>
-        <button onclick="saveText(qset2.html)" type="button" class="saveandexit">Save and Exit</button>
+        <button onclick="saveText1('qset2.html')" type="button" class="saveandexit">Save and Exit</button>
     </div>
 
     <div class="nextpage">
-        <form action="qset2.html">
-            <button onclick="saveText(qset2)" type="button" style="cursor: pointer; padding: 10px;">Next Page ></button>
-        </form>
+        <button onclick="saveText1('qset2.html')" type="button" style="cursor: pointer; padding: 10px;">Next Page ></button>
     </div>
 
     <div class="lastpage">
-        <form action="intro.html">
-            <button onclick="saveText(intro.html)" style="cursor: pointer; padding: 10px 30px;"> Exit </button>
-        </form>
+        <button onclick="saveText1('intro.html')" style="cursor: pointer; padding: 10px 30px;"> Exit </button>
     </div>
 </body>
