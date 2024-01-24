@@ -1,21 +1,162 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="Author" content="Calvin Condie">
-        <link rel="stylesheet" type="text/css" href="style.css" />
-        <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
-        <style>
-        </style>
-    </head>
-<body>
-    <h1>Display Page</h1>
-
-    <div id='displayContainer'></div>
-
-
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Author" content="Calvin Condie">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
+    <style>
+    </style>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
+</head>
 
+<body>
+    <div class="sidenav">    <li style="margin: 15%; font-size:30px;">
+        DataSafe
+    </li>
+    <li>
+        <a href="home.html">Home</a>
+    </li>
+    <li>
+        <a href="intro.html">Creating a data card</a>
+    </li>
+    <li>
+        <a href="account.html">Account</a>
+    </li>
+    <li>
+        <a href="browse.html">Browse</a>
+    </li>
+    <li>
+        <a href="saved.html">Saved Cards</a>
+    </li>
+    <li>
+        <a href="account.html">Logout</a>
+    </li>
+    </div>
+    <div id="pdf" style="margin-left: 25%; margin-top: 10%;">
+        <div>
+            <p>Data Card for <span id="nameText"></span></p>
+            <p>Dataset overview</p>: <span id="descriptionText"></span></p>
+            <p>Motivation for creation of the dataset: <span id="motivationText"></span></p>
+            <p>Accessibility of the dataset: <span id="accessibilityText"></span></p>
+            <p>Motivation for research: <span id="researchText"></span></p>
+            <p>Dataset Authors: <span id="authorsText"></span></p>
+            <p>Collaborators/contributors: <span id="contributorsText"></span></p>
+            <p>Funding: <span id="fundingText"></span></p>
+            <p>Combination: <span id="combinationText"></span></p>
+            <p>Date of dataset ceration: <span id="dateText"></span></p>
+            <p>Dataset version: <span id="versionText"></span></p>
+            <br>
+        </div>
+        <div style="margin-left:50px;">
+            <p>Main application(s): <span id="applicationsText"></span></p>
+            <p>Primary datatypes: <span id="datatypesText"></span></p>
+            <p>Primary data: <span id="qorqText"></span></p>
+            <p>Annotation method: <span id="annotationText"></span></p>
+            <p>Data collection method: <span id="collectionText"></span></p>
+            <p>Dataset size: <span id="sizeText"></span></p>
+            <p>Data splits: <span id="splitsText"></span></p>
+            <p>Data format: <span id="formatText"></span></p>
+            <p>Languages used: <span id="languagesText"></span></p>
+            <p>Dataset license ID: <span id="licenceText"></span></p>
+            <p>Last update to dataset: <span id="updateText"></span></p>
+            <p>Kown underrepresented categories/fields: <span id="flawsText"></span></p>
+            <p>Sensitive data: <span id="personalText"></span></p>
+            <p>DOI citation number: <span id="doiText"></span></p>
+        </div>
+
+        <div>
+            <p>Is the dataset still being maintained: <span id="maintainedText"></span></p>
+            <p>Possible related social impact: <span id="socialText"></span></p>
+            <p>Kown possible underlying bias/problems: <span id="biasText"></span></p>
+            <p>How to cite the dataset: <span id="citeText"></span></p>
+            <p>Other possible applications of the dataset: <span id="UsesText"></span></p>
+            <p>Known unsafe applications: <span id="unsafeText"></span></p>
+            <p>Additional information: <span id="furtherText"></span></p>
+
+        
+        </div>
+    </div>
+
+    <button onclick="checkAndExportToPDF()">Export to PDF</button>
+
+    <!-- Add more div elements as needed -->
+    <script>
+        var keysArray = [
+            //Question set 1
+            { key: 'DatasetName', targetElementId: 'nameText' },
+            { key: 'description', targetElementId: 'descriptionText' },
+            { key: 'motivation', targetElementId: 'motivationText' },
+            { key: 'accessibility', targetElementId: 'accessibilityText' },
+            { key: 'research', targetElementId: 'researchText' },
+            { key: 'authors', targetElementId: 'authorsText' },
+            { key: 'contributors', targetElementId: 'contributorsText' },
+            { key: 'funding', targetElementId: 'fundingText' },
+            { key: 'combination', targetElementId: 'combinationText' },
+            { key: 'date', targetElementId: 'dateText' },
+            { key: 'version', targetElementId: 'versionText' },
+            
+            //Question set 2
+            { key: 'applications', targetElementId: 'applicationsText' },
+            { key: 'datatypes', targetElementId: 'datatypesText' },
+            { key: 'qorq', targetElementId: 'qorqText' },
+            { key: 'size', targetElementId: 'sizeText' },
+            { key: 'personal', targetElementId: 'personalText' },
+            { key: 'flaws', targetElementId: 'flawsText' },
+            { key: 'splits', targetElementId: 'splitsText' },
+            { key: 'annotation', targetElementId: 'annotationText' },
+            { key: 'collection', targetElementId: 'collectionText' },
+            { key: 'format', targetElementId: 'formatText' },
+            { key: 'languages', targetElementId: 'languagesText' },
+            { key: 'doi', targetElementId: 'doiText' },
+            { key: 'licence', targetElementId: 'licenceText' },
+            { key: 'update', targetElementId: 'updateText' },
+
+            //Question set 3
+            { key: 'maintained', targetElementId: 'maintainedText' },
+            { key: 'Uses', targetElementId: 'UsesText' },
+            { key: 'unsafe', targetElementId: 'unsafeText' },
+            { key: 'social', targetElementId: 'socialText' },
+            { key: 'bias', targetElementId: 'biasText' },
+            { key: 'cite', targetElementId: 'citeText' },
+            { key: 'further', targetElementId: 'furtherText' },
+
+        ];
+
+        // Call displayMultipleKeys to display information for multiple keys
+        displayMultipleKeys(keysArray);
+    </script>
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js">
+
+        import { jsPDF } from "jspdf";
+
+
+        // Check if jsPDF is defined, then export to PDF
+        function checkAndExportToPDF() {
+            if (typeof jsPDF !== 'undefined') {
+                exportToPDF();
+            } else {
+                console.error('jsPDF not defined. Make sure the library is loaded.');
+            }
+        }
+
+        // Function to export PDF
+        function exportToPDF() {
+            // Create a new jsPDF instance
+            
+            var pdf = new jsPDF();
+
+            // Get the content of the target div
+            var content = document.getElementById('pdf');
+
+            // Convert the content to PDF
+            pdf.fromHTML(content, 15, 15);
+
+            // Save the PDF
+            pdf.save('exported.pdf');
+        }
+    </script>
 
 </body>
 

@@ -112,6 +112,9 @@ function saveText3(nextPage) {
     const bias = document.getElementById("bias").value;
     localStorage.setItem("bias", bias);
 
+    const social = document.getElementById("social").value;
+    localStorage.setItem("social", social);
+
     const cite = document.getElementById("cite").value;
     localStorage.setItem("cite", cite);
 
@@ -122,19 +125,22 @@ function saveText3(nextPage) {
 
 }
 
-// displayData
-document.addEventListener("DOMContentLoaded", function () {
-    var displayContainer = document.getElementById('displayContainer');
 
-    // Iterate through localStorage keys
-    for (var i = 0; i < localStorage.length; i++) {
-        var key = localStorage.key(i);
-        var storedData = localStorage.getItem(key);
 
-        // Display the key-value pair on the webpage
-        var content = "<p>" + key + ": " + storedData + "</p>";
-        displayContainer.innerHTML += content;
-    
+function displayLocalStorageData(key, targetElementId) {
+    var storedData = localStorage.getItem(key);
+    var targetElement = document.getElementById(targetElementId);
+
+    if (storedData !== null && targetElement !== null) {
+        targetElement.innerHTML = "<p>" + storedData + "</p>";
+    } else {
+        console.error("Key not found or target element not found:", key, targetElementId);
     }
-});
+}
+
+function displayMultipleKeys(keysArray) {
+    keysArray.forEach(function (keyInfo) {
+        displayLocalStorageData(keyInfo.key, keyInfo.targetElementId);
+    });
+}
 
