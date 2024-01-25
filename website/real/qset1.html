@@ -48,13 +48,14 @@
         <a style="color: black;" href="qset1.html">Primary/General</a>
     </div>
 
-    <div style="margin-left: 20%; padding: 10px 10px">
+    <div class="setTitle">
         <h3 style="display: inline;">
             Question set 1: <p style="display: inline; font-size: medium; font-weight: lighter;">General and primary information</p>
         </h3>
     </div>
 
-    <div style="display: block; text-align: left; padding: 10px 10px; margin-left: 20%;">
+    
+    <div style="display: block; text-align: left; padding: 10px 10px; margin-left: 25%;">
         <form id="formSet1">
             <label for="DatasetName">Name of Dataset</label>
             <br>
@@ -70,13 +71,19 @@
             <br>
             <p>Dataset Accessibility</p>
             <div>
-                <input style="cursor: pointer;" type="radio" id="publicly" name="accessibility" value="Publicly available">
+                <input style="cursor: pointer;" type="radio" id="publicly" name="accessibility" value="Publicly available" onclick="showExtenstion()">
                 <label for="internal">Internally funded</label><br>
                 <input style="cursor: pointer;" type="radio" id="on_demand" name="accessibility" value="Available on demand">
                 <label for="external">Externally funded</label><br>
                 <input style="cursor: pointer;" type="radio" id="Private" name="accessibility" value="Private dataset">
                 <label for="combination">Combination</label><br>
             </div>
+            <div id="popUp">
+                <label for="accessibilityInfo">Please provide more information:</label>
+                <br>
+                <textarea name="accessibilityInfo" id="accessibilityInfo" rows="4" placeholder="&lt Give information here &gt"></textarea>
+            </div>
+
             <br>
             <label for="research">Motivation for Research</label>
             <br>
@@ -130,11 +137,14 @@
         <button onclick="saveText1('qset2.html')" type="button" class="saveandexit">Save and Exit</button>
     </div>
 
-    <div class="nextpage">
-        <button onclick="saveText1('qset2.html')" type="button" style="cursor: pointer; padding: 10px;">Next Page ></button>
-    </div>
+    <div class="navContainer">
 
-    <div class="lastpage">
-        <button onclick="saveText1('intro.html')" style="cursor: pointer; padding: 10px 30px;"> Exit </button>
+        <div class="nextpage" >
+            <button onclick="saveText1('qset2.html')" type="button" style="cursor: pointer; padding: 10px;">Next Page ></button>
+        </div>
+
+        <div class="lastpage">
+            <button onclick="saveText1('intro.html')" style="cursor: pointer; padding: 10px 30px;"> Exit </button>
+        </div>
     </div>
 </body>

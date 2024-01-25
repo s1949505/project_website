@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
         <style>
         </style>
+        <script src="script.js"></script>
     </head>
 <body>
 <h1 style="text-align: center;  color: black; font-size: 34px; font-family: Inter; font-weight: 400; word-wrap: break-word">
@@ -15,20 +16,22 @@
 <div class="loginBox">
     <h2>User Login</h2>
     <div class="entries">
-        <p>Email Address</p>
+        <input type="text" style="text-align: center;" id="email" placeholder="Email Address">
     </div>
+    <br>
     <div class="entries">
-        <p>Password</p>
+        <input type="text" style="text-align: center;" id="password" placeholder="Password">
     </div>
+    <br>
     <div class="pageText">
         <span>Remeber details for automatic login</span>
         <label class="switch">
-            <input type="checkbox">
+            <input id="remeberMeCheckbox" type="checkbox">
             <span class="slider round"></span>
         </label>
     </div>
     <div class="greenButtons">
-        <p>LOGIN</p>
+        <button onclick="login()">Login</button>
     </div>
     <p style="color: #6D6D6D; text-align:center; font-size:10px;">
         <u>Forgot Password?</u>
@@ -44,11 +47,11 @@
     </div>
     <p style="text-align: center;font-size:10px;">Don't have an account? Create one by clicking the button below:</p>
     <div class="greenButtons">
-        <p>Register a new account</p>
+        <button onclick="register()">Register a new account</button>
     </div>
     <p style="font-size: 10px;">Or simply:</p>
     <div class="greenButtons" style="background-color: lightgray">
-        <p>Continue without logging in</p>
+        <button onclick="continueAsGuest()">Continue as guest</button>
     </div>
 
     

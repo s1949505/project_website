@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet'>
+        <script src="script.js"></script>
         <style>
         </style>
     </head>
@@ -35,7 +36,7 @@
         </li>
     </div>
     <div class="align">
-        <div class="createcard">
+        <button class="createcard" style="cursor: pointer;" onclick="navButton('intro.html')">
             <h2 style="font-size: 20px; font-family: 'Inria Sans'">
                 Create new data card 
                 <div style="width: 32px; height: 30px; left: 200px; top: 11px; position: absolute">
@@ -43,7 +44,8 @@
                     <div style="width: 25px; height: 0px; left: 0px; top: 16px; position: absolute; border: 2px black solid"></div>
                 </div>
             </h2>
-        </div>
+        </button>
+
 
         <div class="search">
             <h2 style="font-size: 20px; font-family: 'Inria Sans'; color: grey;">
@@ -54,8 +56,9 @@
             </h2>
         </div>
     </div>
-    <div style="position: absolute; right: 10px; top: 30px;">
-        <a style="padding: 10px; color: black;" href="login_page_real.html">Login</a>
+
+    <div id="loginContainer">
+        <a style="padding: 10px; color: black;"  href="login_page_real.html">Login</a>
         <a style="color: black; padding: 8px; background-color: white; border-color: black; border-radius: 8px; border-style: solid;" href="login_page_real.html">Create an account</a>
     </div>
 

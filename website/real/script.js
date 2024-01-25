@@ -144,3 +144,87 @@ function displayMultipleKeys(keysArray) {
     });
 }
 
+window.onload = function () {
+    const savedEmail = localStorage.getItem('savedEmail');
+    const savedPassword = localStorage.getItem('savedPassword');
+    const rememberMeCheckbox = document.getElementById('rememberMe');
+
+    if (savedEmail && savedPassword) {
+        document.getElementById('email').value = savedEmail;
+        document.getElementById('password').value = savedPassword;
+        rememberMeCheckbox.checked = true;
+    }
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+    function login() {
+        // Get user input
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const rememberMeCheckbox = document.getElementById('remeberMeCheckbox');
+
+        // Check if email and password are not blank
+        if (email.trim() === '' || password.trim() === '') {
+            alert('Please enter both email and password.');
+            return; // Stop execution if fields are blank
+        }
+
+
+        // Check if "Remember Me" is checked
+        if (rememberMeCheckbox.checked) {
+            // Save credentials to localStorage
+            localStorage.setItem('savedEmail', email);
+            localStorage.setItem('savedPassword', password);
+            var credentialsSaved = true;
+
+        } else {
+            // Clear saved credentials
+            localStorage.removeItem('savedEmail');
+            localStorage.removeItem('savedPassword');
+            var credentialsSaved = false;
+
+        }
+
+
+        // For demonstration purposes, alert the user with the entered credentials
+   
+        alert(`Login successful!\nEmail: ${email}\nPassword: ${password}\nCredentials Saved: ${credentialsSaved ? 'Yes' : 'No'}`);
+
+        window.location.href = 'home.html';
+
+    }
+
+    window.login = login
+
+
+});
+
+function navButton(page){
+    window.location.href = page;
+}
+
+function continueAsGuest() {
+    // Set the window location to home.html
+    window.location.href = 'home.html';
+}
+
+function register() {
+    // Set the window location to home.html
+    window.location.href = 'register.html';
+}
+
+function showExtenstion() {
+    var additionalElement = document.getElementById('popUp');
+
+    var option1 = document.getElementById('publicly').checked;
+    var option2 = document.getElementById('on_demand').checked;
+    var option3 = document.getElementById('Private').checked;
+
+    if (option1) {
+        additionalElement.style.display = "block"
+    }
+    else {
+        additionalElement.style.display = 'none';
+    }
+
+}

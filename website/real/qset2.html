@@ -48,13 +48,13 @@
         <a style="color: black;" href="qset1.html">Primary/General</a>
     </div>
 
-    <div style="margin-left: 20%; padding:10px 10px">
+    <div class="setTitle">
         <h3 style="display: inline;">
             Question set 2: <p style="display: inline; font-size: medium; font-weight: lighter;">Technical dataset insights</p>
         </h3>
     </div>
 
-    <div style="display: block; text-align: left; padding: 10px 10px 10px 10px; margin-left: 20%;">
+    <div style="display: block; text-align: left; padding: 10px 10px 10px 10px; margin-left: 25%;">
         <form id="formSet2">
             <label for="applications">Main Applications:</label>
             <br>
@@ -144,12 +144,14 @@
         <button onclick="saveText2('qset3.html')" type="button" style=" margin-top: 150px;" class="saveandexit">Save and Exit</button>
     </div>
 
-    <div class="nextpage" style="bottom: -700px;">
-        <button onclick="saveText2('qset3.html')" type="button" style="cursor: pointer; padding: 10px;">Next Page ></button>
-    </div>
+    <div class="navContainer">
+        <div class="nextpage" >
+            <button onclick="saveText2('qset3.html')" type="button" style="cursor: pointer; padding: 10px;">Next Page ></button>
+        </div>
 
-    <div class="lastpage" style="bottom: -700px;">
-        <button onclick="saveText2('qset1.html')" type="button" style="cursor: pointer; padding: 10px;"> &lt Last Page</button>
+        <div class="lastpage">
+            <button onclick="saveText2('qset1.html')" style="cursor: pointer; padding: 10px 30px;"> Previous </button>
+        </div>
     </div>
 
 </body>
