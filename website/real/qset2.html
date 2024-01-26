@@ -80,10 +80,16 @@
             <label style="width: 75%; display: inline-block;" for="personal">Does the dataset include potentially sensitive or personal data?</label>
             <br>
             <div>  
-                <input style="cursor: pointer;" type="radio" id="personal_yes" name="personal" value="yes">
+                <input style="cursor: pointer;" type="radio" id="personal_yes" name="personal" value="yes" onclick="showExtenstion('show', 'personalInfo', '&lt What measures have been taken to ensure annonymization/safety? You may describe procedures or requirements met &gt')">
                 <label for="yes">Yes</label><br>
-                <input style="cursor: pointer;" type="radio" id="personal_no" name="personal" value="no">
+                <input style="cursor: pointer;" type="radio" id="personal_no" name="personal" value="no" onclick="showExtenstion('hide', 'personalInfo', '')">
                 <label for="no">No</label><br>
+                <div class="popUp" id="personalInfo">
+                    <br>
+                    <label for="personalInfo">Please provide more information:</label>
+                    <br>
+                    <textarea class="popupTextArea" name="personalInfo" id="personalInfo" rows="4" placeholder="default"></textarea>
+                </div>
             </div>
             <br>
             <label style="width: 75%; display: inline-block;" for="flaws">Known underrepresented fields/categories or missing data:</label>
@@ -96,12 +102,18 @@
             <br>
             <p>Annotation method:</p>
             <div>
-                <input style="cursor: pointer;" type="radio" id="expert" name="annotation" value="expert">
+                <input style="cursor: pointer;" type="radio" id="expert" name="annotation" value="expert" onclick="showExtenstion('show', 'annotationInfo', '&lt Who were the experts and are they credited. You may give names, backgrounds and so forth. &gt')">
                 <label for="expert">Manually by expert</label><br>
-                <input style="cursor: pointer;" type="radio" id="non" name="annotation" value="non">
+                <input style="cursor: pointer;" type="radio" id="non" name="annotation" value="non" onclick="showExtenstion('show', 'annotationInfo', '&lt Who were the annotators, were they volunteers or paid and were annotations reviewed &gt')">
                 <label for="non">Manually by non-expert</label><br>
-                <input style="cursor: pointer;" type="radio" id="auto" name="annotation" value="auto">
+                <input style="cursor: pointer;" type="radio" id="auto" name="annotation" value="auto" onclick="showExtenstion('show', 'annotationInfo', '&lt What method(s) were used and were these checked &gt')">
                 <label for="auto">Automatically</label><br>
+                <div class="popUp" id="annotationInfo">
+                    <br>
+                    <label for="annotationInfo">Please provide more information:</label>
+                    <br>
+                    <textarea class="popupTextArea" name="annotationInfo" id="annotationInfo" rows="4" placeholder="default"></textarea>
+                </div>
             </div>
             <br>
             <label for="collection">Data collection method:</label>

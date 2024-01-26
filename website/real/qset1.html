@@ -71,19 +71,19 @@
             <br>
             <p>Dataset Accessibility</p>
             <div>
-                <input style="cursor: pointer;" type="radio" id="publicly" name="accessibility" value="Publicly available" onclick="showExtenstion()">
+                <input style="cursor: pointer;" type="radio" id="publicly" name="accessibility" value="Publicly available" onclick="showExtenstion('show', 'accessibilityInfo','&lt Include a link, contact or sourcing information &gt')">
                 <label for="internal">Internally funded</label><br>
-                <input style="cursor: pointer;" type="radio" id="on_demand" name="accessibility" value="Available on demand">
+                <input style="cursor: pointer;" type="radio" id="on_demand" name="accessibility" value="Available on demand" onclick="showExtenstion('show', 'accessibilityInfo','&lt Describe the process (who to contact etc.) and an expected waiting time for access to the dataset &gt')">
                 <label for="external">Externally funded</label><br>
-                <input style="cursor: pointer;" type="radio" id="Private" name="accessibility" value="Private dataset">
+                <input style="cursor: pointer;" type="radio" id="Private" name="accessibility" value="Private dataset" onclick="showExtenstion('show', 'accessibilityInfo','&lt Why is the dataset private and will it ever be made public? Do your best to explain &gt')">
                 <label for="combination">Combination</label><br>
+                <div class="popUp" id="accessibilityInfo">
+                    <br>
+                    <label for="accessibilityInfo">Please provide more information:</label>
+                    <br>
+                    <textarea class="popupTextArea" name="accessibilityInfo" id="accessibilityInfo" rows="4" placeholder="default"></textarea>
+                </div>
             </div>
-            <div id="popUp">
-                <label for="accessibilityInfo">Please provide more information:</label>
-                <br>
-                <textarea name="accessibilityInfo" id="accessibilityInfo" rows="4" placeholder="&lt Give information here &gt"></textarea>
-            </div>
-
             <br>
             <label for="research">Motivation for Research</label>
             <br>
@@ -99,19 +99,31 @@
             <br>
             <p>How was funding for this work obtained?</p>
             <div>
-                <input style="cursor: pointer;" type="radio" id="internal" name="funding" value="Internally funded">
+                <input style="cursor: pointer;" type="radio" id="internal" name="funding" value="Internally funded" onclick="showExtenstion('show', 'fundingInfo','&lt Was in house funding available? If not why was funding not sourced? &gt')">
                 <label for="internal">Internally funded</label><br>
-                <input style="cursor: pointer;" type="radio" id="external" name="funding" value="Externally funded">
+                <input style="cursor: pointer;" type="radio" id="external" name="funding" value="Externally funded" onclick="showExtenstion('show', 'fundingInfo', '&lt Why was funding needed and who funded the creation of the dataset and what connection to the project do they have.  &gt')">
                 <label for="external">Externally funded</label><br>
-                <input style="cursor: pointer;" type="radio" id="combination" name="funding" value="Combination">
+                <input style="cursor: pointer;" type="radio" id="combination" name="funding" value="Combination" onclick="showExtenstion('show', 'fundingInfo', '&lt  Why was funding needed and who funded the creation of the dataset and what connection to the project do they have. &gt')">
                 <label for="combination">Combination</label><br>
+                <div class="popUp" id="fundingInfo">
+                    <br>
+                    <label for="fundingInfo">Please provide more information:</label>
+                    <br>
+                    <textarea class="popupTextArea" name="fundingInfo" id="fundingInfo" rows="4" placeholder="default"></textarea>
+                </div>
             </div>
             <p>Is the dataset a combination of existing datasets</p>
             <div>  
-                <input style="cursor: pointer;" type="radio" id="yes" name="combination" value="yes">
+                <input style="cursor: pointer;" type="radio" id="yes" name="combination" value="yes" onclick="showExtenstion('show', 'combinationInfo', '&lt How many datasets were combined and why was this necessary. Were there any complications during this process and how have they been worked around. &gt')">
                 <label for="yes">Yes</label><br>
-                <input style="cursor: pointer;" type="radio" id="no" name="combination" value="no">
+                <input style="cursor: pointer;" type="radio" id="no" name="combination" value="no" onclick="showExtenstion('hide', 'combinationInfo', ' ')">
                 <label for="no">No</label><br>
+                <div class="popUp" id="combinationInfo">
+                    <br>
+                    <label for="combinationInfo">Please provide more information:</label>
+                    <br>
+                    <textarea class="popupTextArea" name="combinationInfo" id="combinationInfo" rows="4" placeholder="default"></textarea>
+                </div>
             </div>
             <br>
             <label for="date">Date the dataset was created (leave blank if not finished)</label>

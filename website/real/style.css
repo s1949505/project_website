@@ -135,13 +135,15 @@ input:checked + .slider:before {
 }
 
 .topscreen {
-    margin-left: 10%;
+    top: -20px;
+    margin-left: 3%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     position: relative;
 }
+
 
 @media screen and (max-width: 915px) {
     .topscreen {
@@ -346,6 +348,7 @@ textarea[type=text]{
 }
 
 .overviews {
+    text-align: center;
     margin: 0;
     padding: 0;
     width: 20%;
@@ -378,16 +381,15 @@ textarea[type=text]{
 }
 
 .saveandexit{
+    display: inline-block;
     text-align: center;
     background-color: #ff6b6b;
     padding: 15px 15px;
-    display: inline-block;
     font-size: 16px;
     color: black;
     cursor: pointer;
     border-radius: 10px;
     margin-top: 250px;
-    margin-left: 8px;
 }
 
 .navContainer{
@@ -447,14 +449,16 @@ textarea[type=text]{
     position: relative; 
 }
 
-#popUp {
+.popUp {
     display: none;
     /* Add additional styling for the element */
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    background-color: lightblue;
-    padding: 10px;
+    position: relative;
+}
 
-    width: 1000px;
+.popupTextArea{
+    background-color: #e9e9e9;
+    width: 70%;
+    padding: 12px, 20px;
+    size: 55%; 
+    resize: vertical;
 }

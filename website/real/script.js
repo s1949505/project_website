@@ -213,18 +213,20 @@ function register() {
     window.location.href = 'register.html';
 }
 
-function showExtenstion() {
-    var additionalElement = document.getElementById('popUp');
+function showExtenstion(display, popupID, placeholder) {
 
-    var option1 = document.getElementById('publicly').checked;
-    var option2 = document.getElementById('on_demand').checked;
-    var option3 = document.getElementById('Private').checked;
+    var additionalElement = document.getElementById(popupID);
 
-    if (option1) {
-        additionalElement.style.display = "block"
-    }
-    else {
+    var textarea = additionalElement.querySelector('.popupTextArea');
+    textarea.placeholder = placeholder;
+
+    // Display the additional element
+    additionalElement.style.display = 'block';
+
+    if (display=='hide'){
         additionalElement.style.display = 'none';
     }
+
+
 
 }
