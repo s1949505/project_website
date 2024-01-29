@@ -6,10 +6,28 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
         <style>
         </style>
+
+        <script src="script.js"></script>
+        <script>
+            var storedUser = localStorage.getItem('user');
+            var userName = storedUser ? storedUser : 'Guest';
+
+            // Display the name on the page
+            window.onload = function() {
+                document.getElementById('name').innerText = userName;
+            }; var storedUser = localStorage.getItem('user');
+                var userName = storedUser ? JSON.parse(storedUser) : 'Guest';
+
+                // Display the name on the page
+                window.onload = function() {
+                    document.getElementById('name').innerText = userName;
+                };
+
+        </script>
     </head>
 <body>
-
-    <div class="sidenav">    <li style="margin: 15%; font-size:30px;">
+<!--
+    <div class="sidenav">    <li style="text-align:center; margin: 15%; font-size:30px;">
             DataSafe
         </li>
         <li>
@@ -31,6 +49,10 @@
             <a href="account.html">Logout</a>
         </li>
     </div>
+-->
+    <h3 style="left: 80px;">Welcome, <span id="name"></span></h3>
+
+    
 
     <div class="footer" style="font-family: 'Inria Sans'; position: absolute;">
         <a><u>Contact us:</u> <br> DataSafe@gmail.com <br> DataSafe.twitter </a>

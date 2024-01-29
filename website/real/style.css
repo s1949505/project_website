@@ -99,6 +99,8 @@ input:checked + .slider:before {
     border-radius: 10px;
 }
 
+
+
 .greenButtons button{
     border: 1px black;    
     background-color: lightgreen;
@@ -109,6 +111,28 @@ input:checked + .slider:before {
     border-radius: 10px;
     cursor: pointer;
 }
+.greyButtons{
+    border: 1px black;    
+    background-color: lightgray;
+    margin: auto;
+    text-align: center;
+    width: 40%;
+    color: black;
+    border-radius: 10px;
+}
+.greyButtons button{
+    border: 1px black;    
+    background-color: lightgray;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+
 
 .signInVia{
     border: 2px solid black;    
@@ -461,4 +485,20 @@ textarea[type=text]{
     padding: 12px, 20px;
     size: 55%; 
     resize: vertical;
+}
+
+.text-block {
+    display: inline-block;
+    width: 40%; /* Adjust the width as needed */
+    margin: 10px;
+    padding: 5px;
+}
+
+@media screen and (max-width: 900px) {
+    .text-block {
+        display: block;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
 }

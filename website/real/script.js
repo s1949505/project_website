@@ -206,6 +206,9 @@ function navButton(page){
 function continueAsGuest() {
     // Set the window location to home.html
     window.location.href = 'home.html';
+    var name = 'Guest'
+    localStorage.setItem("user", name)
+
 }
 
 function register() {
@@ -229,4 +232,34 @@ function showExtenstion(display, popupID, placeholder) {
 
 
 
+}
+
+function validatePassword(){
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const email = document.getElementById('email').value;
+    const dob = document.getElementById('dob').value;
+    const name = document.getElementById('name').value;
+
+
+    var hasNumber = /\d/.test(password);
+    var validLength = password.length > 7;
+    var noBlanks = !(email.trim() === '' && name.trim() === '' && dob.trim() === '')
+
+ 
+
+    if (password === confirmPassword && hasNumber && validLength && noBlanks) {
+        alert('Account successfuly created');
+        loggedIn = true
+        window.location.href ='home.html'
+        localStorage.setItem("user", JSON.stringify(name))
+    } else if(!noBlanks){
+            alert('All fields must be completed to create an account.')
+    }else{
+        var alertMessage = 'Passwords ';
+        alertMessage += (password !== confirmPassword) ? 'do not match. ' : '';
+        alertMessage += (!hasNumber) ? 'must contain at least one number. ' : '';
+        alertMessage += (!validLength) ? 'must be over 8 characters long. ' : '';
+        alert(alertMessage) 
+    }
 }
