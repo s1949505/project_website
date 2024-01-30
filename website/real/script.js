@@ -263,3 +263,105 @@ function validatePassword(){
         alert(alertMessage) 
     }
 }
+
+
+
+
+function toggleEditMode() {
+    var bio = document.getElementById('bio');
+    var links = document.getElementById('links');
+    var name = document.getElementById('name');
+    var editButton = document.getElementById('editButton');
+    var saveButton = document.getElementById('saveButton');
+
+    if (editButton.textContent === 'Edit Information') {
+        // Save the current content as data-* attributes
+        bio.setAttribute('data-original-content', bio.textContent);
+        links.setAttribute('data-original-content', links.textContent);
+        name.setAttribute('data-original-content', name.textContent);
+
+        // Make the content editable
+        bio.contentEditable = true;
+        links.contentEditable = true;
+        name.contentEditable = true;
+
+        // Change the button text
+        editButton.textContent = 'Cancel';
+        saveButton.style.display = 'block';
+    } else {
+        // Exit edit mode
+        bio.contentEditable = false;
+        links.contentEditable = false;
+        name.contentEditable = false;
+
+        // Reset content if it was empty
+        if (bio.textContent.trim() === '') {
+            bio.textContent = bio.getAttribute('data-original-content');
+        }
+        if (links.textContent.trim() === '') {
+            links.textContent = links.getAttribute('data-original-content');
+        }
+        if (name.textContent.trim() === '') {
+            name.textContent = name.getAttribute('data-original-content');
+        }
+
+        // Change the button text
+        editButton.textContent = 'Edit Information';
+        saveButton.style.display = 'none';
+    }
+}
+
+function saveInfo() {
+    var editedBio = document.getElementById('bio').textContent;
+    var editedLinks = document.getElementById('links').textContent;
+    var editedName = document.getElementById('name').textContent;
+
+    // Save the information to localStorage
+    localStorage.setItem('bio', editedBio);
+    localStorage.setItem('links', editedLinks);
+    localStorage.setItem('user', editedName);
+
+    // Display success message
+    alert('Information has been updated successfully');
+
+    toggleEditMode();
+}
+
+function saveToAccount() {
+    // Retrieve values from local storage
+    var datasetName = localStorage.getItem('DatasetName') || '';
+    var user = localStorage.getItem('user') || '';
+
+    // Generate a unique identifier
+    var identifier = user + '_' + datasetName.replace(/\s/g, '_');
+
+    // Save the identifier in local storage
+    localStorage.setItem('currentIdentifier', identifier);
+
+    // Create a new key in local storage using the generated identifier
+    var storageKey = 'data_' + identifier;
+
+    // Store information from keysArray under the new key
+    var storedData = {};
+    for (var i = 0; i < keysArray.length; i++) {
+        var item = keysArray[i];
+        var element = document.getElementById(item.targetElementId);
+        var text = element ? element.innerText : 'null';
+
+        // Store information in local storage
+        localStorage.setItem(storageKey + '_' + item.key, text);
+
+        // Store information in the storedData object
+        storedData[item.key] = text;
+    }
+
+    // Save the identifier in a library (you can use an array for simplicity)
+    var library = JSON.parse(localStorage.getItem('library')) || [];
+    library.push({ identifier: identifier, datasetName: datasetName, user: user });
+
+    // Save the updated library in local storage
+    localStorage.setItem('library', JSON.stringify(library));
+
+    // Redirect to the complete.html page
+    window.location.href = 'complete.html?identifier=' + encodeURIComponent(identifier);
+}

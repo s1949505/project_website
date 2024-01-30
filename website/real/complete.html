@@ -19,7 +19,8 @@
 </head>
 
 <body>
-    <div class="sidenav">    <li style=" text-align:center; margin: 15%; font-size:30px;">
+    <div class="sidenav">
+    <li style="text-align:center; padding-top: 20px; padding-bottom: 10px; font-size:30px;">
         DataSafe
     </li>
     <li>
@@ -105,16 +106,85 @@
         </div>
     </div>
 
-    <button id="exportBtn">Export to PDF</button>
-    <!-- Add more div elements as needed 
+    <div class="greenButtons" style="width: 120px; height: 30px; position: absolute; top: 70px; right: 0px; margin-right: 5%;">
+        <button style="padding: 10px;" id="exportBtn">Export to PDF</button>
+    </div>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.56/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.56/vfs_fonts.js"></script>
-    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
--->
+    <div class="greenButtons" style="width: 120px; height: 30px; position: absolute; top: 130px; right: 0px; margin-right: 5%;">
+        <button style="padding: 10px;" id="saveBtn" onclick="saveToAccount()">Save To account</button>
+    </div>
+
+    <h2>Complete Information for <span id="identifierText"></span></h2>
+
     <script src="script.js"></script>
 
     <script>
+        window.onload = function () {
+            // Retrieve identifier from URL
+            var urlParams = new URLSearchParams(window.location.search);
+            var identifier = urlParams.get('identifier');
+
+            // Use the identifier to load and display data on the page
+            loadDataForIdentifier(identifier);
+        };
+
+        function loadDataForIdentifier(identifier) {
+        // Retrieve data from local storage using the identifier
+        var storageKey = 'data_' + identifier;
+        var storedData = {};
+
+        // Populate storedData with information from local storage
+        for (var i = 0; i < keysArray.length; i++) {
+            var item = keysArray[i];
+            var key = storageKey + '_' + item.key;
+            var storedValue = localStorage.getItem(key);
+
+            // Add the key-value pair to the storedData object
+            storedData[item.key] = storedValue || 'N/A';
+        }
+
+        // Update HTML elements with the retrieved data
+        document.getElementById('nameText').innerText = storedData['DatasetName'];
+        document.getElementById('descriptionText').innerText = storedData['description'];
+        document.getElementById('authorsText').innerText = storedData['authors'];
+        document.getElementById('contributorsText').innerText = storedData['contributors'];
+        document.getElementById('motivationText').innerText = storedData['motivation'];
+        document.getElementById('researchText').innerText = storedData['research'];
+        document.getElementById('accessibilityText').innerText = storedData['accessibility'];
+        document.getElementById('combinationText').innerText = storedData['combination'];
+        document.getElementById('fundingText').innerText = storedData['funding'];
+        document.getElementById('dateText').innerText = storedData['date'];
+        document.getElementById('versionText').innerText = storedData['version'];
+
+        document.getElementById('applicationsText').innerText = storedData['applications'];
+        document.getElementById('datatypesText').innerText = storedData['datatypes'];
+        document.getElementById('qorqText').innerText = storedData['qorq'];
+        document.getElementById('annotationText').innerText = storedData['annotation'];
+        document.getElementById('collectionText').innerText = storedData['collection'];
+        document.getElementById('sizeText').innerText = storedData['size'];
+        document.getElementById('splitsText').innerText = storedData['splits'];
+        document.getElementById('formatText').innerText = storedData['format'];
+        document.getElementById('personalText').innerText = storedData['personal'];
+        document.getElementById('flawsText').innerText = storedData['flaws'];
+        document.getElementById('languagesText').innerText = storedData['languages'];
+        document.getElementById('licenceText').innerText = storedData['licence'];
+        document.getElementById('doiText').innerText = storedData['doi'];
+        document.getElementById('updateText').innerText = storedData['update'];
+
+        document.getElementById('maintainedText').innerText = storedData['maintained'];
+        document.getElementById('UsesText').innerText = storedData['Uses'];
+        document.getElementById('unsafeText').innerText = storedData['unsafe'];
+        document.getElementById('socialText').innerText = storedData['social'];
+        document.getElementById('biasText').innerText = storedData['bias'];
+        document.getElementById('citeText').innerText = storedData['cite'];
+        document.getElementById('furtherText').innerText = storedData['further'];
+
+        // Optionally, you can add additional logic or formatting here
+
+        // For demonstration purposes, you can log the retrieved data to the console
+        console.log('Retrieved Data:', storedData);
+    }
+        
 
         var keysArray = [
             //Question set 1
@@ -240,6 +310,7 @@
 
             // Save the PDF file
             pdf.save('exported_content.pdf');
+            alert("export successful")
         });
 
 

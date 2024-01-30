@@ -4,30 +4,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="Author" content="Calvin Condie">
         <link rel="stylesheet" type="text/css" href="style.css" />
-        <style>
-        </style>
-
-        <script src="script.js"></script>
         <script>
-            var storedUser = localStorage.getItem('user');
-            var userName = storedUser ? storedUser : 'Guest';
 
-            // Display the name on the page
-            window.onload = function() {
-                document.getElementById('name').innerText = userName;
-            }; var storedUser = localStorage.getItem('user');
-                var userName = storedUser ? JSON.parse(storedUser) : 'Guest';
+            window.onload = function () {
+                // Load stored values from local storage
+                var storedBio = localStorage.getItem('bio');
+                var storedLinks = localStorage.getItem('links');
+                var storedUser = localStorage.getItem('user');
 
-                // Display the name on the page
-                window.onload = function() {
-                    document.getElementById('name').innerText = userName;
-                };
-
+                // Populate the elements with the stored values
+                document.getElementById('bio').textContent = storedBio || 'User Bio';
+                document.getElementById('links').textContent = storedLinks || 'Add some contact points';
+                document.getElementById('name').textContent = storedUser || 'User';
+            };
+            
         </script>
     </head>
 <body>
-<!--
-    <div class="sidenav">    <li style="text-align:center; margin: 15%; font-size:30px;">
+
+    <div class="sidenav">
+        <li style="text-align:center; padding-top: 20px; padding-bottom: 10px; font-size:30px;">
             DataSafe
         </li>
         <li>
@@ -49,14 +45,41 @@
             <a href="account.html">Logout</a>
         </li>
     </div>
--->
-    <h3 style="left: 80px;">Welcome, <span id="name"></span></h3>
+    <div class="userInfo">
+        <h3 style="position: relative; top: 0px; left: 0px;">Welcome, <span id="name" style="position: relative; top: 5px;"  class="editable">User</span></h3>
 
-    
+        <h3 style="position: relative; left: 40%; top: -40px;">Where to find me: </h3>
+        <span style="position: relative; left: 40%; top: -40px;" id="links" class="editable" contenteditable="true" placeholder="Add some contact points">Add some contact points</span>
 
-    <div class="footer" style="font-family: 'Inria Sans'; position: absolute;">
+        <h3 style="position: relative;">Bio</h3>
+        <span style="position: relative; top: -10px" id="bio" contenteditable="true" class="editable" aria-placeholder="User bio">User Bio</span>
+
+        <div id="buttonsContainer" style="position: relative; top: -50px; margin-left: 45%;">
+            <button id="editButton" onclick="toggleEditMode()">Edit Information</button>
+            <button id="saveButton" style="display: none;" onclick="saveInfo()">Save Information</button>
+        </div>
+    </div>
+    <div class="userCards" id="userCardsArea">
+        <h3><u>Your Saved Data</u></h3>
+        <div id="userCards">
+            <!-- Display the first 3 items in the library as links -->
+            <ul id="savedDataList"></ul>
+            <p><a href="saved.html">Explore All Saved Data</a></p>
+        </div>
+    </div>
+
+    <div class="savedCards">
+        <h3><u>Saved Cards</u></h3>
+
+    </div>
+
+    <div class="footer" style="font-family: 'Inria Sans'; position: relative;">
         <a><u>Contact us:</u> <br> DataSafe@gmail.com <br> DataSafe.twitter </a>
         <a><u>Having Probelems?</u> <br> Find our FAQs here: <br> DataSafeFAQs.com</a>
         <a><u>Other useful links:</u> <br> linktoethicspaper.com <br> otherlink.com</a>
     </div>
+
+<script src="script.js"></script>
+
 </body>
+</html>

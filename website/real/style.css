@@ -111,6 +111,19 @@ input:checked + .slider:before {
     border-radius: 10px;
     cursor: pointer;
 }
+
+.greenButtons button:active{
+    border: 1px black;    
+    background-color: rgb(98, 193, 98);
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    border: #6D6D6D;
+    border-width: 3px;
+}
 .greyButtons{
     border: 1px black;    
     background-color: lightgray;
@@ -252,8 +265,8 @@ input:checked + .slider:before {
     margin: 0;
     padding: 0;
     width: 20%;
-    min-width: 150px;
-    max-width: 250px;
+    min-width: 130px;
+    max-width: 200px;
     background-color: #7fb2ff;
     position: fixed;
     height: 80%;
@@ -501,4 +514,33 @@ textarea[type=text]{
         margin: 0px;
         padding: 0px;
     }
+}
+
+.userInfo{
+    margin-left: 28%;
+    position: relative;
+    margin-top: 70px;
+    width: 80%;
+    height: 300px;
+}
+
+.editable {
+    max-height: 400px; /* Set your desired max height */
+    max-width: 30%; /* Set your desired max width */
+    overflow: auto; /* Add overflow auto to enable scrolling if content exceeds the specified max dimensions */
+    display: inline-block; /* Allow the element to grow/shrink within the specified dimensions */
+}
+
+.savedCards{
+    position: relative;
+    margin-left: 28%;
+    width: 40%;
+    height: 150px;
+}
+
+.userCards{
+    position: relative;
+    margin-left: 28%;
+    width: 40%;
+    height: 150px;
 }

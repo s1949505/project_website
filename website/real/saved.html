@@ -9,32 +9,26 @@
     </head>
 <body>
 
-    <div class="sidenav">    <li style="text-align:center; margin: 15%; font-size:30px;">
-            DataSafe
-        </li>
-        <li>
-            <a href="home.html">Home</a>
-        </li>
-        <li>
-            <a href="intro.html">Creating a data card</a>
-        </li>
-        <li>
-            <a href="account.html">Account</a>
-        </li>
-        <li>
-            <a href="browse.html">Browse</a>
-        </li>
-        <li>
-            <a class="active" href="saved.html">Saved Cards</a>
-        </li>
-        <li>
-            <a href="account.html">Logout</a>
-        </li>
-    </div>
+    <h1>All Saved Data</h1>
+    <ul id="allSavedDataList"></ul>
 
-    <div class="footer" style="font-family: 'Inria Sans';">
-        <a><u>Contact us:</u> <br> DataSafe@gmail.com <br> DataSafe.twitter </a>
-        <a><u>Having Probelems?</u> <br> Find our FAQs here: <br> DataSafeFAQs.com</a>
-        <a><u>Other useful links:</u> <br> linktoethicspaper.com <br> otherlink.com</a>
-    </div>
+    <script src="script.js"></script>
+    <script>
+        // Load and display all saved data from the library
+        window.onload = function () {
+            var library = JSON.parse(localStorage.getItem('library')) || [];
+            var allSavedDataList = document.getElementById('allSavedDataList');
+
+            for (var i = 0; i < library.length; i++) {
+                var item = library[i];
+                var listItem = document.createElement('li');
+                var link = document.createElement('a');
+                link.href = 'complete.html?identifier=' + encodeURIComponent(item.identifier);
+                link.textContent = item.user + "'s " + item.datasetName;
+
+                listItem.appendChild(link);
+                allSavedDataList.appendChild(listItem);
+            }
+        };
+    </script>
 </body>
