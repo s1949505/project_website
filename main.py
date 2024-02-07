@@ -15,6 +15,7 @@ def intro():
 
 def process_file(filename, max_rows, max_cols, title_row):
     print("processing file")
+    
 
     columns_to_read = f'A:{max_cols}'
 
